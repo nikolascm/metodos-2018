@@ -45,6 +45,7 @@ plota_graficos(x,y,polinomio);
 function plota_graficos(x,y,s)    
     % Plotar grafico funcao
     hold on
+    grid on
     y_aproximado = str2func(['@(x)' s]);
     plot(x,y_aproximado(x),'b',...
         'LineWidth',2);
