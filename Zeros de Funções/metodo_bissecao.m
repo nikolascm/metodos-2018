@@ -4,18 +4,18 @@
 clear all;
 
 % Entrada dos dados
-funcao = input('\nEntre com a funcao(usando . antes de ^): ', 's');
+func = input('\nEntre com a funcao(usando . antes de ^): ', 's');
 a = input('Digite o extremo esquerdo do intervalo(a): ');
 b = input('Digite o extremo direito do intervalo(b): '); 
 TOL = input('Informe a tolerancia desejada: ');
 NMAX = input ('Numero maximo de iteracoes: '); 
-funcao = inline(funcao);
+funcao = inline(func);
 
 % Calculos iniciais
 aux = 0;
 x = 0;
-x_ = [];
-fx_ = [];
+a_ = a;
+b_ = b;
 iteracao = 1;
 FA = funcao(a);
 FB = funcao(b);
@@ -39,8 +39,8 @@ while(intervalo > TOL)
     if(abs(fx) < TOL)
         fprintf('\n');
         fprintf('\n-> Condicao(f(x)<TOL)');
-        fprintf('\n->f(%d)= %0.5f < TOL = %0.5f',iteracao,fx,TOL);
-		fprintf('\nA solucao obtida vale aproximadamente: %0.5f\n\n',fx);
+        fprintf('\n-> |f(%d)|= %0.5f < TOL = %0.5f',iteracao,abs(fx),TOL);
+		fprintf('\n-> Solucao: x = %0.5f\n\n',x); 
 		aux = 1;
         break;
 	else
@@ -60,18 +60,25 @@ while(intervalo > TOL)
 end
 if(aux==0)
     fprintf('\n');
-    fprintf('\n->Condicao((b-a)<TOL)');
-    fprintf('\n(b-a)= %0.5f < TOL = %0.5f',intervalo,TOL);
-    fprintf('\nA solucao obtida vale aproximadamente: %0.5f\n',x);
+    fprintf('\n-> Condicao((b-a)<TOL)');
+    fprintf('\n-> (b-a)= %0.5f < TOL = %0.5f',intervalo,TOL);
+    fprintf('\n-> Solucao: x = %0.5f\n\n',x);
 end
 
-% Plotar grafico da funcao
+% Graficos
 hold on
 grid on
-x_ = a:TOL:b;
-xlim([a, b]);
-ylim ([funcao(a), funcao(b)]);
-plot(x_, funcao(x_), 'b',(a+b)/2, funcao((a+b)/2), 'o-r', [a,b], [0,0],'--');
+
+% Plotar grafico funcao
+y = str2func(['@(x)' func]);
+plot([a_,b_], [0,0],'--');
+fplot(y,[a_,b_],'b');
+
+% Plotar ponto
+plot(x,funcao(x),'o',...
+    'MarkerSize',6,...
+    'MarkerEdgeColor','r',...
+    'MarkerFaceColor','r');
 
 % Configuracao da legenda
 title('Método da Bisseção');
