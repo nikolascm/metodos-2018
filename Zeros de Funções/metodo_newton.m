@@ -49,5 +49,5 @@ end
 
 % Imprime resultados
 fprintf('\n\n');
-fprintf('-> Solução = %f\n', solucao);
+fprintf('-> Solução: x = %f\n', solucao);
 fprintf('-> Convergiu? = %s\n\n', convergiu);
