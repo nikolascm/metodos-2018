@@ -1,4 +1,4 @@
-% Metodo de Newton
+% Metodo de Newton Modificado
 % Aluno: Nikolas Machado Correa
 
 clear all;
@@ -21,19 +21,18 @@ convergiu = '';
 fprintf('\n');
 fprintf('n    xn        f(xn)           f´(xn)');
 
-% Metodo de Newton
+% Metodo de Newton Modificado
+deriv = str2func(['@(x)' derivada]);    
+dfx = deriv(x);
+
 while i < NMAX
     func = str2func(['@(x)' funcao_]);
-    deriv = str2func(['@(x)' derivada]);
-    
     fx = func(x);
-    dfx = deriv(x);
-    
     if(fx>0)
         fprintf('\n%d    %0.5f   +%0.5e    %0.5f', i, x, fx, dfx);
     else
         fprintf('\n%d    %0.5f   %0.5e    %0.5f', i, x, fx, dfx);
-    end 
+    end
     if(abs(delta_x) <= TOL & (abs(fx) <= TOL || dfx == 0))
         break;
     end
