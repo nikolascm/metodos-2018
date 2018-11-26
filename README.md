@@ -1,5 +1,5 @@
 # Nikolas Machado Corrêa
-4º Semestre - Ciência da Computação - UFSM
+4º Semestre - Ciência da Computação - UFSM <br />
 Disciplina de Métodos Numéricos e Computacionais - MTM224 - 2018
 - Algoritmos implementados usando o software MATLAB R2018a
 
