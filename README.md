@@ -28,4 +28,5 @@ Disciplina de Métodos Numéricos e Computacionais - MTM224 - 2018
     
     - Integração Numérica
         - [Regra dos Trapézios Generalizada](https://github.com/nikolascm/metodos-2018/blob/master/Integra%C3%A7%C3%A3o%20Num%C3%A9rica/trapezios_generalizados.m)
+        - [Regra 1/3 de Simpson](https://github.com/nikolascm/metodos-2018/blob/master/Integra%C3%A7%C3%A3o%20Num%C3%A9rica/regra_simpson.m)
 
